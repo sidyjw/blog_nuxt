@@ -2,6 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
+const _07824bfb = () => interopDefault(import('../pages/about/index.vue' /* webpackChunkName: "pages/about/index" */))
+const _1487e13d = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
+const _3dd2f67e = () => interopDefault(import('../pages/posts/index.vue' /* webpackChunkName: "pages/posts/index" */))
+const _79f65fd0 = () => interopDefault(import('../pages/admin/auth/index.vue' /* webpackChunkName: "pages/admin/auth/index" */))
+const _08a60615 = () => interopDefault(import('../pages/admin/new-post/index.vue' /* webpackChunkName: "pages/admin/new-post/index" */))
+const _0cc92968 = () => interopDefault(import('../pages/admin/_postId/index.vue' /* webpackChunkName: "pages/admin/_postId/index" */))
+const _2bad572c = () => interopDefault(import('../pages/posts/_id/index.vue' /* webpackChunkName: "pages/posts/_id/index" */))
+const _6aad1a3d = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+
 Vue.use(Router)
 
 if (process.client) {
@@ -76,7 +85,39 @@ export function createRouter() {
     linkExactActiveClass: 'nuxt-link-exact-active',
     scrollBehavior,
 
-    routes: [],
+    routes: [{
+      path: "/about",
+      component: _07824bfb,
+      name: "about"
+    }, {
+      path: "/admin",
+      component: _1487e13d,
+      name: "admin"
+    }, {
+      path: "/posts",
+      component: _3dd2f67e,
+      name: "posts"
+    }, {
+      path: "/admin/auth",
+      component: _79f65fd0,
+      name: "admin-auth"
+    }, {
+      path: "/admin/new-post",
+      component: _08a60615,
+      name: "admin-new-post"
+    }, {
+      path: "/admin/:postId",
+      component: _0cc92968,
+      name: "admin-postId"
+    }, {
+      path: "/posts/:id",
+      component: _2bad572c,
+      name: "posts-id"
+    }, {
+      path: "/",
+      component: _6aad1a3d,
+      name: "index"
+    }],
 
     fallback: false
   })

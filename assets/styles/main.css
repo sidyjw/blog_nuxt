@@ -1,11 +1,14 @@
+html {
+    font-family: "Open Sans";
+}
 body {
-  margin: 0 20px;
+    margin: 0;
 }
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 .page-enter,
 .page-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
