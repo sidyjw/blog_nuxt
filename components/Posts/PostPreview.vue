@@ -19,6 +19,7 @@ export default {
             required: true
         },
         postId: String,
+        id: String,
         title: String,
         previewText: String,
         thumbnail: String
@@ -29,13 +30,13 @@ export default {
                 ? {
                       name: "admin-postId",
                       params: {
-                          postId: this.postId
+                          postId: this.id
                       }
                   }
                 : {
                       name: "posts-id",
                       params: {
-                          id: this.postId
+                          id: this.id
                       }
                   };
         }

@@ -1,12 +1,12 @@
 <template>
     <div class="single-post-page">
         <section class="post">
-            <h1 class="post-title">Title of the Post</h1>
+            <h1 class="post-title">{{ loadedPost.title }}</h1>
             <div class="post-details">
-                <div class="post-detail">Last update on XXX</div>
-                <div class="post-detail">Writen by NAME</div>
+                <div class="post-detail">Last update on {{ loadedPost.updateDate }}</div>
+                <div class="post-detail">Writen by {{ loadedPost.author }}</div>
             </div>
-            <p class="post-content">Content of the post</p>
+            <p class="post-content">{{ loadedPost.content }}</p>
         </section>
         <section class="post-feedback">
             <p>
@@ -18,6 +18,37 @@
         </section>
     </div>
 </template>
+
+<script>
+export default {
+    async asyncData({ params, redirect, error }) {
+        try {
+            const loadedPost = await new Promise((resolve, reject) => {
+                // reject("Eu quis rejeitar");
+                setTimeout(
+                    () =>
+                        resolve({
+                            loadedPost: {
+                                id: "1",
+                                title: `Primeiro post ID: ${params.id}`,
+                                author: "Sidiney",
+                                updateDate: new Date().toLocaleString(),
+                                content: "Conteudo muito legalllll",
+                                previewText: "Prévia do texto",
+                                thumbnail: "https://google.com/google.jpg"
+                            }
+                        }),
+                    2000
+                );
+            });
+            return loadedPost;
+        } catch (err) {
+            error({ statusCode: 500, message: "errro" });
+            console.log(err);
+        }
+    }
+};
+</script>
 
 <style scoped>
 .single-post-page {

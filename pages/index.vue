@@ -3,16 +3,27 @@
         <section class="intro">
             <h1>Get the lastest tech news!</h1>
         </section>
-        <PostList/>
+        <PostList :posts="loadedPosts"/>
     </div>
 </template>
 
 <script>
 import PostList from "@/components/Posts/PostList.vue";
+import { mapGetters } from "vuex";
+
 export default {
     components: {
         PostList
+    },
+    computed: {
+        ...mapGetters(["loadedPosts"])
     }
+
+    // data() {
+    //     return {
+    //         // loadedPosts: {}
+    //     };
+    // }
 };
 </script>
 
