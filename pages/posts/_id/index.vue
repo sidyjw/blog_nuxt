@@ -21,31 +21,11 @@
 
 <script>
 export default {
-    async asyncData({ params, redirect, error }) {
-        try {
-            const loadedPost = await new Promise((resolve, reject) => {
-                // reject("Eu quis rejeitar");
-                setTimeout(
-                    () =>
-                        resolve({
-                            loadedPost: {
-                                id: "1",
-                                title: `Primeiro post ID: ${params.id}`,
-                                author: "Sidiney",
-                                updateDate: new Date().toLocaleString(),
-                                content: "Conteudo muito legalllll",
-                                previewText: "Prévia do texto",
-                                thumbnail: "https://google.com/google.jpg"
-                            }
-                        }),
-                    2000
-                );
-            });
-            return loadedPost;
-        } catch (err) {
-            error({ statusCode: 500, message: "errro" });
-            console.log(err);
-        }
+    asyncData({ $axios, params, redirect, error }) {
+        return $axios
+            .get(`/posts/${params.id}.json`)
+            .then(res => ({ loadedPost: res.data }))
+            .catch(e => error(e));
     }
 };
 </script>

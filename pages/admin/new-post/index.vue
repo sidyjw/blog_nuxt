@@ -1,7 +1,8 @@
 <template>
     <div class="admin-new-post-page">
         <section class="new-post-form">
-            <AdminPostForm :post="{}"/>
+            <!-- É sempre bom usar kebab-case nos nomes de eventos -->
+            <AdminPostForm :props="{}" @submit-post="onSubmited"/>
         </section>
     </div>
 </template>
@@ -13,6 +14,17 @@ export default {
     layout: "admin",
     components: {
         AdminPostForm
+    },
+    data() {
+        return {
+            newPost: {}
+        };
+    },
+    methods: {
+        onSubmited(postData) {
+            this.$store.dispatch("addPost", postData);
+            this.$router.push('/admin')
+        }
     }
 };
 </script>

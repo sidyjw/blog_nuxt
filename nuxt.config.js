@@ -60,6 +60,7 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: "https://nuxt-blog-90a5f.firebaseio.com"
   },
 
   /*

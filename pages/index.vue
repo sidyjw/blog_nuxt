@@ -17,8 +17,14 @@ export default {
     },
     computed: {
         ...mapGetters(["loadedPosts"])
+    },
+    asyncData() {
+        //Tanto o asyncData quanto o fetch são executados no lado do servidor e por isso eles pre renderizam a pagina a diferença é que p fetch apenas popula o
+        //store equant o o async popula o data.
+        //Caso eu não queira esperar toda hora pra pegar os dados eu posso fazer um
+        //if check no process.server e assim só executar o async ou fetch no lado do servidor
+        //Para ficar mais fácil, de uma olhada no diagrama no site do Nuxt
     }
-
     // data() {
     //     return {
     //         // loadedPosts: {}

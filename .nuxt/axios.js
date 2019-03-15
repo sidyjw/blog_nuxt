@@ -106,8 +106,8 @@ const setupProgress = (axios, ctx) => {
 export default (ctx, inject) => {
   // baseURL
   const baseURL = process.browser
-      ? 'http://localhost:3000/'
-      : (process.env._AXIOS_BASE_URL_ || 'http://localhost:3000/')
+      ? 'https://nuxt-blog-90a5f.firebaseio.com'
+      : (process.env._AXIOS_BASE_URL_ || 'https://nuxt-blog-90a5f.firebaseio.com')
 
   // Create fresh objects for all default header scopes
   // Axios creates only one which is shared across SSR requests!

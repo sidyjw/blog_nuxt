@@ -6,7 +6,7 @@
         <section class="existing-post">
             <h1>Existing posts</h1>
             <!-- Não preciso passar explicitamente true ou false para uma prop tipo Boolean -->
-            <PostList isAdmin/>
+            <PostList isAdmin :posts="loadedPosts"/>
         </section>
     </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import PostList from "@/components/Posts/PostList";
 import AppButton from "@/components/UI/AppButton";
-
+import { mapGetters } from 'vuex'
 export default {
     layout: "admin",
     components: {
@@ -25,7 +25,10 @@ export default {
         link: {
             name: "admin-new-post"
         }
-    })
+    }),
+    computed:{
+        ...mapGetters(['loadedPosts'])
+    }
 };
 </script>
 

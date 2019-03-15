@@ -4,9 +4,11 @@
 
         <AppControlInput v-model="editedPost.title">Title</AppControlInput>
 
-        <AppControlInput v-model="editedPost.thumbnailLink">Thumbnail Link</AppControlInput>
+        <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput>
 
         <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
+
+        <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview</AppControlInput>
 
         <AppButton type="submit">Save</AppButton>
 
@@ -32,8 +34,10 @@ export default {
             editedPost: (this.post && this.post) || {
                 author: "",
                 title: "",
-                thumbnailLink: "",
-                content: ""
+                thumbnail: "",
+                previewText: "",
+                content: "",
+                id: this.post && this.post.id
             }
         };
     },
@@ -42,7 +46,9 @@ export default {
     },
     methods: {
         onSave() {
-            console.log(this.editedPost);
+            //Pra deixar um componente desaclopado o ideal é sempre ficar
+            //enviando os dados atraves de eventos
+            this.$emit("submit-post", this.editedPost);
         },
         onCancel() {
             this.$router.push("/admin");
